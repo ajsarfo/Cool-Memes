@@ -78,10 +78,7 @@ class SettingsFragment : Fragment() {
 
     private fun setupButtonListeners() {
         layoutBinding.approveRegister.setOnClickListener {
-            lifecycleScope.launch {
-                if (activityViewModel.isUserRegistered(requireContext())) listener.navigateToApprove()
-                else registerUser()
-            }
+           listener.navigateToApprove()
         }
         layoutBinding.uploaded.setOnClickListener {
             listener.navigateToViewUpload()
