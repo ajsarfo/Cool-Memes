@@ -79,7 +79,8 @@ class SettingsFragment : Fragment() {
 
     private fun setupButtonListeners() {
         layoutBinding.approveRegister.setOnClickListener {
-            requireContext().toast("Not available")
+            listener.navigateToApprove()
+           // requireContext().toast("Not available")
            /*
             lifecycleScope.launch {
                 if (activityViewModel.isUserRegistered(requireContext())) listener.navigateToApprove()

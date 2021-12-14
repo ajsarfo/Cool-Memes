@@ -45,12 +45,6 @@ class MainActivity : BaseActivity(), MemeFragmentListener, SettingsFragmentListe
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layoutBinding.root)
-        /*************** Admob Configuration ********************/
-        BannerManager(this, adRequestBuilder).attachBannerAd(
-            getString(R.string.admob_banner_main),
-            layoutBinding.mainBanner
-        )
-        /**********************************************************/
         readWrite = ReadWriteHandler(this)
         fetchPicture = FetchPictureHandler(this)
         nightHandler = NightModeHandler(this)
@@ -76,9 +70,7 @@ class MainActivity : BaseActivity(), MemeFragmentListener, SettingsFragmentListe
     }
 
     override fun navigateToDetail(memeToDetail: MemeToDetail) {
-        interstitialManager?.showAd {
-            navigateToWithParcel(DetailActivity::class.java, parcel = memeToDetail)
-        }
+        navigateToWithParcel(DetailActivity::class.java, parcel = memeToDetail)
     }
 
     override fun getNightModeHandler(): NightModeHandler {
@@ -90,8 +82,6 @@ class MainActivity : BaseActivity(), MemeFragmentListener, SettingsFragmentListe
     }
 
     override fun navigateToViewUpload() {
-        interstitialManager?.showAd {
             navigateTo(ViewUploadActivity::class.java)
-        }
     }
 }

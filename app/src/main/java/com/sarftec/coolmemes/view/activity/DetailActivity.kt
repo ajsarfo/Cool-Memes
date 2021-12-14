@@ -51,24 +51,9 @@ class DetailActivity : BaseActivity() {
         LoadingDialog(this, layoutBinding.root)
     }
 
-    private val rewardVideoManager by lazy {
-        RewardVideoManager(
-            this,
-            R.string.admob_reward_video_id,
-            adRequestBuilder,
-            networkManager
-        )
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layoutBinding.root)
-        /*************** Admob Configuration ********************/
-        BannerManager(this, adRequestBuilder).attachBannerAd(
-            getString(R.string.admob_banner_detail),
-            layoutBinding.mainBanner
-        )
-        /**********************************************************/
         readWriteHandler = ReadWriteHandler(this)
         getParcelFromIntent<MemeToDetail>(intent)?.let {
             viewModel.setParcel(it)
@@ -102,10 +87,8 @@ class DetailActivity : BaseActivity() {
                     if (it.isSuccess()) this@DetailActivity.downloadGlideImage(it.data!!)
                         .let { result ->
                             if (result.isSuccess()) {
-                                rewardVideoManager.showRewardVideo {
                                     loadingDialog.dismiss()
                                     callback(result.data!!)
-                                }
                             } else toast("Action Failed!")
                         }
                     else {

@@ -1,17 +1,14 @@
 package com.sarftec.coolmemes.view.activity.user
 
-import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
-import com.sarftec.coolmemes.R
 import com.sarftec.coolmemes.databinding.ActivityViewUploadBinding
 import com.sarftec.coolmemes.view.adapter.MemeViewUploadAdapter
 import com.sarftec.coolmemes.view.adapter.viewholder.MemeViewUploadViewHolder
-import com.sarftec.coolmemes.view.advertisement.BannerManager
 import com.sarftec.coolmemes.view.viewmodel.ViewUploadViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -31,16 +28,6 @@ class ViewUploadActivity : BaseUserActivity<ViewUploadViewModel, MemeViewUploadV
         MemeViewUploadAdapter(lifecycleScope, viewModel)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        /*************** Admob Configuration ********************/
-        BannerManager(this, adRequestBuilder).attachBannerAd(
-            getString(R.string.admob_banner_upload),
-            layoutBinding.mainBanner
-        )
-        /**********************************************************/
-    }
-
 
     override fun getCountTextView(): TextView = layoutBinding.itemCount
 
@@ -51,13 +38,11 @@ class ViewUploadActivity : BaseUserActivity<ViewUploadViewModel, MemeViewUploadV
     override fun setupButtonListeners() {
         layoutBinding.clear.setOnClickListener { viewModel.clearMemes() }
         layoutBinding.delete.setOnClickListener {
-           rewardVideoManager.showRewardVideo {
                lifecycleScope.launch {
                    performAction(viewModel.getSelectedMemes()) {
                        viewModel.deleteMeme(it)
                    }
                }
-           }
         }
     }
 
