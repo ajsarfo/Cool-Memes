@@ -19,7 +19,6 @@ import com.sarftec.coolmemes.view.manager.BillingManager
 import com.sarftec.coolmemes.view.utils.toast
 import com.sarftec.coolmemes.view.viewmodel.MainViewModel
 import kotlinx.coroutines.CompletableDeferred
-import kotlinx.coroutines.launch
 
 class SettingsFragment : Fragment() {
 
