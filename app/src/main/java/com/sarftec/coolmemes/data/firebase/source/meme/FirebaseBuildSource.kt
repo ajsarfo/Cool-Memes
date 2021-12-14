@@ -29,7 +29,7 @@ open class FirebaseBuildSource @Inject constructor(
                     it.id = Date().time.toString()
                     it.voteCount = 0
                     it.imageLocation = "$FIREBASE_IMAGE_FOLDER/${imageInfo.toFullName()}"
-                    it.inReview = true
+                    it.inReview = false
                     it.userId = context.getId()
                 }
             collectionRef.document(wallpaper.id.toString())
