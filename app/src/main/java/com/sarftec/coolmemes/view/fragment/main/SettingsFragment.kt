@@ -54,8 +54,8 @@ class SettingsFragment : Fragment() {
             )
         }
         setupButtonListeners()
-        setupSwitchListeners()
         setupSwitch()
+        setupSwitchListeners()
         return layoutBinding.root
     }
 
@@ -78,10 +78,13 @@ class SettingsFragment : Fragment() {
 
     private fun setupButtonListeners() {
         layoutBinding.approveRegister.setOnClickListener {
+            requireContext().toast("Not available")
+           /*
             lifecycleScope.launch {
                 if (activityViewModel.isUserRegistered(requireContext())) listener.navigateToApprove()
                 else registerUser()
             }
+            */
         }
         layoutBinding.uploaded.setOnClickListener {
             listener.navigateToViewUpload()
