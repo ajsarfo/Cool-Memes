@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "429738092671",
+    "project_id": "cool-memes-ff8a5",
+    "storage_bucket": "cool-memes-ff8a5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:429738092671:android:fc4e112751f20f3160b74a",
+        "android_client_info": {
+          "package_name": "com.sarftec.coolmemes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "429738092671-t41f2tmh7jadeo7mhu1ajentfv03g9eg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcLqzGRTp0sDw4gdml_QE8M4nNcelW0q8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "429738092671-t41f2tmh7jadeo7mhu1ajentfv03g9eg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

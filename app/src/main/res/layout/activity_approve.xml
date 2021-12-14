@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <FrameLayout
+        android:id="@+id/recycler_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/buttons_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/item_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:textSize="18dp"
+                tools:text="10 items selected" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/buttons_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/main_banner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:visibility="visible">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/approve"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/color_primary"
+            android:text="Approve"
+            app:backgroundTint="@color/color_primary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/delete"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TextContrastCheck" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/delete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@color/color_primary"
+            android:text="Delete"
+            app:backgroundTint="@color/color_detail_bottom_dislike"
+            app:layout_constraintBottom_toBottomOf="@+id/approve"
+            app:layout_constraintEnd_toStartOf="@+id/clear"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/approve"
+            app:layout_constraintTop_toTopOf="@+id/approve"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="TextContrastCheck" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/clear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@color/color_primary"
+            android:text="Clear"
+            app:backgroundTint="@color/color_upload_clear_button"
+            app:layout_constraintBottom_toBottomOf="@+id/approve"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/delete"
+            app:layout_constraintTop_toTopOf="@+id/approve"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="TextContrastCheck" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+   <!--
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/load_memes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="Load Memes"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
+        app:srcCompat="@drawable/ic_fetch"
+        app:tint="@color/color_on_primary"
+        app:backgroundTint="@color/color_primary"
+        app:elevation="8dp"
+        app:fabCustomSize="64dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttons_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginRight="16dp" />
+   -->
+
+    <ProgressBar
+        android:id="@+id/circular_progress"
+        android:layout_width="@dimen/circular_progress_indicator_size"
+        android:layout_height="@dimen/circular_progress_indicator_size"
+        android:indeterminateTint="@color/color_primary"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/buttons_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.060000002"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/show_no_meme"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="16dp"
+        android:gravity="center"
+        android:text="No Memes Found!"
+        android:textColor="@color/color_network_error_text"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttons_container"
+        app:layout_constraintEnd_toStartOf="@+id/buttons_container"
+        app:layout_constraintStart_toEndOf="@+id/buttons_container"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/main_banner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:background="@color/teal_200"
+        tools:layout_editor_absoluteY="735dp"
+        tools:layout_height="50dp"
+        tools:visibility="visible" />
+</androidx.constraintlayout.widget.ConstraintLayout>

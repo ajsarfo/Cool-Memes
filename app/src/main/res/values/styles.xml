@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CustomTabStyle" parent="Widget.AppCompat.ActionBar.TabText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="CustomSettingsTitleStyle" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/color_setting_item_title</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="CustomSettingsSubtitleStyle" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textColor">@color/color_settings_item_subtitle</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="CustomSettingsButtonTextStyle" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="textAllCaps">true</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/color_on_primary</item>
+    </style>
+</resources>
