@@ -34,11 +34,11 @@ abstract class BaseUserActivity<U: BaseApproveUploadViewModel, T : BaseApproveUp
             this,
             onCancel = {
                 uploadJob = null
-                toast("Upload failed")
+                toast("Action failed")
             },
             onFinished = {
                 uploadJob = null
-                toast("Upload success")
+                toast("Action success")
             }
         )
     }
