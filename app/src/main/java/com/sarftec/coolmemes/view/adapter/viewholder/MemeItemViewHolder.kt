@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -17,6 +18,7 @@ import com.sarftec.coolmemes.view.task.TaskManager
 import com.sarftec.coolmemes.view.viewmodel.BaseViewModel
 import kotlinx.coroutines.CoroutineScope
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 class MemeItemViewHolder(
     private val layoutBinding: LayoutMemeItemBinding,
@@ -34,7 +36,12 @@ class MemeItemViewHolder(
         }
     }
 
-    private fun setLayout(resource: Resource<Uri>) {
+    private fun setLayout(model: MemeUI.Model, resource: Resource<Uri>) {
+       val strokeColor =  if((Date().time - model.meme.id) > TimeUnit.DAYS.toMillis(4))
+            R.color.color_settings_item_divider
+        else R.color.color_primary
+
+        layoutBinding.memeCard.strokeColor = ContextCompat.getColor(itemView.context, strokeColor)
         if (resource.isSuccess()) {
            /*
             layoutBinding.image.apply {
@@ -60,7 +67,7 @@ class MemeItemViewHolder(
             memeUI
         )
         task.addExecution { input -> dependency.viewModel.getImage(input) }
-        task.addCallback { setLayout(it) }
+        task.addCallback { setLayout(memeUI, it) }
         dependency.taskManager.addTask(uuid, task.build())
     }
 
