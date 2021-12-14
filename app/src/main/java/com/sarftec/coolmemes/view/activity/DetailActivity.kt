@@ -12,6 +12,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.sarftec.coolmemes.R
 import com.sarftec.coolmemes.databinding.ActivityDetailBinding
 import com.sarftec.coolmemes.view.adapter.MemeDetailAdapter
+import com.sarftec.coolmemes.view.advertisement.BannerManager
+import com.sarftec.coolmemes.view.advertisement.RewardVideoManager
 import com.sarftec.coolmemes.view.dialog.LoadingDialog
 import com.sarftec.coolmemes.view.handler.ReadWriteHandler
 import com.sarftec.coolmemes.view.handler.ToolingHandler
@@ -49,9 +51,24 @@ class DetailActivity : BaseActivity() {
         LoadingDialog(this, layoutBinding.root)
     }
 
+    private val rewardVideoManager by lazy {
+        RewardVideoManager(
+            this,
+            R.string.admob_reward_video_id,
+            adRequestBuilder,
+            networkManager
+        )
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layoutBinding.root)
+        /*************** Admob Configuration ********************/
+        BannerManager(this, adRequestBuilder).attachBannerAd(
+            getString(R.string.admob_banner_detail),
+            layoutBinding.mainBanner
+        )
+        /**********************************************************/
         readWriteHandler = ReadWriteHandler(this)
         getParcelFromIntent<MemeToDetail>(intent)?.let {
             viewModel.setParcel(it)
@@ -85,8 +102,10 @@ class DetailActivity : BaseActivity() {
                     if (it.isSuccess()) this@DetailActivity.downloadGlideImage(it.data!!)
                         .let { result ->
                             if (result.isSuccess()) {
-                                loadingDialog.dismiss()
-                                callback(result.data!!)
+                                rewardVideoManager.showRewardVideo {
+                                    loadingDialog.dismiss()
+                                    callback(result.data!!)
+                                }
                             } else toast("Action Failed!")
                         }
                     else {

@@ -38,11 +38,13 @@ class ViewUploadActivity : BaseUserActivity<ViewUploadViewModel, MemeViewUploadV
     override fun setupButtonListeners() {
         layoutBinding.clear.setOnClickListener { viewModel.clearMemes() }
         layoutBinding.delete.setOnClickListener {
-            lifecycleScope.launch {
-                performAction(viewModel.getSelectedMemes()) {
-                    viewModel.deleteMeme(it)
-                }
-            }
+           rewardVideoManager.showRewardVideo {
+               lifecycleScope.launch {
+                   performAction(viewModel.getSelectedMemes()) {
+                       viewModel.deleteMeme(it)
+                   }
+               }
+           }
         }
     }
 

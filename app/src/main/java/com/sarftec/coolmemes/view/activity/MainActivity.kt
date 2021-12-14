@@ -10,6 +10,8 @@ import com.sarftec.coolmemes.R
 import com.sarftec.coolmemes.databinding.ActivityMainBinding
 import com.sarftec.coolmemes.view.activity.user.ViewUploadActivity
 import com.sarftec.coolmemes.view.activity.user.ApproveActivity
+import com.sarftec.coolmemes.view.advertisement.AdCountManager
+import com.sarftec.coolmemes.view.advertisement.BannerManager
 import com.sarftec.coolmemes.view.listener.MemeFragmentListener
 import com.sarftec.coolmemes.view.handler.FetchPictureHandler
 import com.sarftec.coolmemes.view.handler.NightModeHandler
@@ -36,9 +38,19 @@ class MainActivity : BaseActivity(), MemeFragmentListener, SettingsFragmentListe
 
     private val viewModel by viewModels<MainViewModel>()
 
+    override fun createAdCounterManager(): AdCountManager {
+        return AdCountManager(listOf(1, 3, 3, 4))
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layoutBinding.root)
+        /*************** Admob Configuration ********************/
+        BannerManager(this, adRequestBuilder).attachBannerAd(
+            getString(R.string.admob_banner_main),
+            layoutBinding.mainBanner
+        )
+        /**********************************************************/
         readWrite = ReadWriteHandler(this)
         fetchPicture = FetchPictureHandler(this)
         nightHandler = NightModeHandler(this)
@@ -64,7 +76,9 @@ class MainActivity : BaseActivity(), MemeFragmentListener, SettingsFragmentListe
     }
 
     override fun navigateToDetail(memeToDetail: MemeToDetail) {
-        navigateToWithParcel(DetailActivity::class.java, parcel = memeToDetail)
+        interstitialManager?.showAd {
+            navigateToWithParcel(DetailActivity::class.java, parcel = memeToDetail)
+        }
     }
 
     override fun getNightModeHandler(): NightModeHandler {
@@ -76,6 +90,8 @@ class MainActivity : BaseActivity(), MemeFragmentListener, SettingsFragmentListe
     }
 
     override fun navigateToViewUpload() {
-        navigateTo(ViewUploadActivity::class.java)
+        interstitialManager?.showAd {
+            navigateTo(ViewUploadActivity::class.java)
+        }
     }
 }
