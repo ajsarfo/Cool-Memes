@@ -61,8 +61,10 @@ class SettingsFragment : Fragment() {
 
     private fun setupSwitch() {
         layoutBinding.offlineMode.isChecked = activityViewModel.isCacheEnabled()
+        /*
         layoutBinding.nightMode.isChecked =
             listener.getNightModeHandler().getMode() == NightModeHandler.Mode.NIGHT
+         */
     }
 
     private fun setupSwitchListeners() {
