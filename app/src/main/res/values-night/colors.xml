@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="color_tab_layout_background">#333333</color>
+    <color name="color_primary">#8E24AA</color>
+    <color name="color_tab_layout_background">#151515</color>
 
     <color name="color_tab_layout_selected_item_text">#A0A0A0</color>
     <color name="color_tab_layout_unselected_item_text">#C5C5C5</color>
@@ -10,4 +11,12 @@
     <color name="color_setting_item_title">#CCCCCC</color>
     <color name="color_settings_item_subtitle">#888888</color>
     <color name="color_settings_item_divider">#686868</color>
+
+    <color name="color_meme_likes_count">@color/color_detail_bottom_like_dislike_grey</color>
+    <color name="color_meme_image_background">@color/color_detail_bottom_section</color>
+
+    <color name="color_detail_bottom_section">#353535</color>
+    <color name="color_detail_bottom_like_dislike_grey">#A1A1A1</color>
+
+    <color name="color_surface">#2F2F2F</color>
 </resources>
