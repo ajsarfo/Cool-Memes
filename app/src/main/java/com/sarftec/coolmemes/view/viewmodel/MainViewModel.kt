@@ -23,7 +23,7 @@ class MainViewModel @Inject constructor(
     private var isCacheEnabled = true
 
     suspend fun isUserRegistered(context: Context): Boolean {
-        return isRegistered ?: context.readSettings(IS_USER_REGISTERED, true).first().also {
+        return isRegistered ?: context.readSettings(IS_USER_REGISTERED, false).first().also {
             isRegistered = it
         }
     }
