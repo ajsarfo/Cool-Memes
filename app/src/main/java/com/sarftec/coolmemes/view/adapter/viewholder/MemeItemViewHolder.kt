@@ -4,6 +4,7 @@ import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -28,26 +29,26 @@ class MemeItemViewHolder(
 
     private fun clearLayout(model: MemeUI.Model) {
         layoutBinding.memeCard.setOnClickListener { dependency.onClick(model) }
-        layoutBinding.voteCount.text = "+${String.format("%,d", model.meme.likes)}"
+        layoutBinding.voteCount.text =  "+${String.format("%,d", model.meme.likes)}"
         layoutBinding.image.apply {
-            //  scaleType = ImageView.ScaleType.FIT_CENTER
+          //  scaleType = ImageView.ScaleType.FIT_CENTER
             setImageResource(R.drawable.ic_image_placeholder)
         }
     }
 
     private fun setLayout(model: MemeUI.Model, resource: Resource<Uri>) {
-        val strokeColor = if ((Date().time - model.meme.id) > TimeUnit.DAYS.toMillis(4))
+       val strokeColor =  if((Date().time - model.meme.id) > TimeUnit.DAYS.toMillis(4))
             R.color.color_settings_item_divider
         else R.color.color_primary
 
         layoutBinding.memeCard.strokeColor = ContextCompat.getColor(itemView.context, strokeColor)
         if (resource.isSuccess()) {
-            /*
-             layoutBinding.image.apply {
-                 layoutBinding.image.setImageBitmap(null)
-                 scaleType = ImageView.ScaleType.FIT_XY
-             }
-             */
+           /*
+            layoutBinding.image.apply {
+                layoutBinding.image.setImageBitmap(null)
+                scaleType = ImageView.ScaleType.FIT_XY
+            }
+            */
             Glide.with(itemView)
                 .load(resource.data!!)
                 .placeholder(R.drawable.ic_image_placeholder)
@@ -59,7 +60,7 @@ class MemeItemViewHolder(
     }
 
     fun bind(memeUI: MemeUI) {
-        if (memeUI !is MemeUI.Model) return
+       if(memeUI !is MemeUI.Model) return
         clearLayout(memeUI)
         val task = Task.createTask<MemeUI.Model, Resource<Uri>>(
             dependency.coroutineScope,
@@ -74,7 +75,7 @@ class MemeItemViewHolder(
         fun getInstance(
             parent: ViewGroup,
             dependency: ViewHolderDependency
-        ): MemeItemViewHolder {
+        ) : MemeItemViewHolder {
             val binding = LayoutMemeItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,

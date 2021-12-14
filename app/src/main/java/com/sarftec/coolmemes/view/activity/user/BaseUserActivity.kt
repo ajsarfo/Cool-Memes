@@ -8,10 +8,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.sarftec.coolmemes.R
 import com.sarftec.coolmemes.utils.Resource
 import com.sarftec.coolmemes.view.activity.BaseActivity
 import com.sarftec.coolmemes.view.adapter.BaseApproveUploadAdapter
 import com.sarftec.coolmemes.view.adapter.viewholder.BaseApproveUploadViewHolder
+import com.sarftec.coolmemes.view.advertisement.RewardVideoManager
 import com.sarftec.coolmemes.view.dialog.ProgressDialog
 import com.sarftec.coolmemes.view.model.MemeUI
 import com.sarftec.coolmemes.view.utils.toast
@@ -32,11 +34,11 @@ abstract class BaseUserActivity<U: BaseApproveUploadViewModel, T : BaseApproveUp
             this,
             onCancel = {
                 uploadJob = null
-                toast("Upload failed")
+                toast("Action failed")
             },
             onFinished = {
                 uploadJob = null
-                toast("Upload success")
+                toast("Action success")
             }
         )
     }
@@ -56,6 +58,19 @@ abstract class BaseUserActivity<U: BaseApproveUploadViewModel, T : BaseApproveUp
     protected abstract fun showLayout(isShown: Boolean)
 
     protected abstract fun showNoMeme(isShown: Boolean)
+
+    override fun canShowInterstitial(): Boolean {
+        return false
+    }
+
+    protected val rewardVideoManager by lazy {
+        RewardVideoManager(
+            this,
+            R.string.admob_reward_video_id,
+            adRequestBuilder,
+            networkManager
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

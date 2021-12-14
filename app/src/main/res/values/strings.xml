@@ -14,22 +14,23 @@
     <string name="admob_test_reward_video_id">ca-app-pub-3940256099942544/5224354917</string>
 
 
-    <string name="admob_banner_main">@string/admob_test_banner_id</string>
-    <string name="admob_banner_detail">@string/admob_test_banner_id</string>
-    <string name="admob_banner_review">@string/admob_test_banner_id</string>
-    <string name="admob_banner_upload">@string/admob_test_banner_id</string>
+     <string name="admob_banner_main">@string/admob_test_banner_id</string>
+     <string name="admob_banner_detail">@string/admob_test_banner_id</string>
+     <string name="admob_banner_review">@string/admob_test_banner_id</string>
+     <string name="admob_banner_upload">@string/admob_test_banner_id</string>
 
-    <string name="admob_interstitial_id">@string/admob_test_interstitial_id</string>
-    <string name="admob_reward_video_id">@string/admob_test_reward_video_id</string>
+     <string name="admob_interstitial_id">@string/admob_test_interstitial_id</string>
+     <string name="admob_reward_video_id">@string/admob_test_reward_video_id</string>
 
 
-<!--
-<string name="admob_banner_main">ca-app-pub-6150813452529727/6668879427</string>
+   <!--
+    <string name="admob_banner_main">ca-app-pub-6150813452529727/6668879427</string>
     <string name="admob_banner_detail">ca-app-pub-6150813452529727/8582588710</string>
     <string name="admob_banner_review">ca-app-pub-6150813452529727/1416552742</string>
     <string name="admob_banner_upload">ca-app-pub-6150813452529727/4042716086</string>
 
     <string name="admob_interstitial_id">ca-app-pub-6150813452529727/8774160400</string>
     <string name="admob_reward_video_id">ca-app-pub-6150813452529727/5026487082</string>
--->
+   -->
+
 </resources>

@@ -15,7 +15,7 @@
     <color name="color_background">#F2F2F2</color>
     <color name="color_surface">@color/white</color>
 
-    <color name="splash_screen_background">#171717</color>
+    <color name="splash_screen_background">#212121</color>
 
     <color name="color_tab_layout_background">@color/white</color>
 

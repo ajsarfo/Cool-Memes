@@ -27,9 +27,9 @@ open class FirebaseBuildSource @Inject constructor(
             val wallpaper = FirebaseMeme()
                 .also {
                     it.id = Date().time.toString()
-                    it.voteCount = (800L until 4000L).random()
+                    it.voteCount = 0
                     it.imageLocation = "$FIREBASE_IMAGE_FOLDER/${imageInfo.toFullName()}"
-                    it.inReview = false
+                    it.inReview = true
                     it.userId = context.getId()
                 }
             collectionRef.document(wallpaper.id.toString())

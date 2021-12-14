@@ -4,7 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
     id 'dagger.hilt.android.plugin'
-    //id 'com.google.gms.google-services'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -14,8 +14,8 @@ android {
         applicationId "com.sarftec.coolmemes"
         minSdk 19
         targetSdk 31
-        versionCode 1
-        versionName "1.0"
+        versionCode 7
+        versionName "2.0"
 
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true

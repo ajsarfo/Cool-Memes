@@ -19,7 +19,6 @@ import com.sarftec.coolmemes.view.manager.BillingManager
 import com.sarftec.coolmemes.view.utils.toast
 import com.sarftec.coolmemes.view.viewmodel.MainViewModel
 import kotlinx.coroutines.CompletableDeferred
-import kotlinx.coroutines.launch
 
 class SettingsFragment : Fragment() {
 
@@ -54,15 +53,17 @@ class SettingsFragment : Fragment() {
             )
         }
         setupButtonListeners()
-        setupSwitchListeners()
         setupSwitch()
+        setupSwitchListeners()
         return layoutBinding.root
     }
 
     private fun setupSwitch() {
         layoutBinding.offlineMode.isChecked = activityViewModel.isCacheEnabled()
+        /*
         layoutBinding.nightMode.isChecked =
             listener.getNightModeHandler().getMode() == NightModeHandler.Mode.NIGHT
+         */
     }
 
     private fun setupSwitchListeners() {
@@ -78,7 +79,13 @@ class SettingsFragment : Fragment() {
 
     private fun setupButtonListeners() {
         layoutBinding.approveRegister.setOnClickListener {
-           listener.navigateToApprove()
+            requireContext().toast("Not available")
+           /*
+            lifecycleScope.launch {
+                if (activityViewModel.isUserRegistered(requireContext())) listener.navigateToApprove()
+                else registerUser()
+            }
+            */
         }
         layoutBinding.uploaded.setOnClickListener {
             listener.navigateToViewUpload()
